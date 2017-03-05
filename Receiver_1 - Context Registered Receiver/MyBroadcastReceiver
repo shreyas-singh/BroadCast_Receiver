@@ -1,0 +1,22 @@
+// this is the class that will extend BroadcadtREceiver and will override the method onReceive. 
+// whenever the broadcast receiver hears for an event , onReceive method is thriggered. 
+// This is triggered on the same thread as Main Thread that is UI thread so t should not be used to do long running process. 
+// Moreover if we create an asynchronous task from this class , then nce onReceive is completed then sysetem kills all the process and so asynchronus tak would be killed.
+
+package example.singh.shreyas.broadcastreceiver_1_1;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Toast;
+
+/**
+ * Created by shreyas singh on 3/5/2017.
+ */
+
+public class MyBroadcastReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        Toast.makeText(context ,intent.getStringExtra("data") , Toast.LENGTH_LONG ).show();
+    }
+}
